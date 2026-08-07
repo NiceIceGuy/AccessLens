@@ -1,0 +1,13 @@
+# Python virtual environment
+Backend/.venv/
+
+# VS Code local settings
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables / secrets
+.env
+Backend/.env

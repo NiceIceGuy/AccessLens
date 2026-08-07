@@ -8,46 +8,66 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Current State
 
-This is a greenfield project. The repository currently contains only:
-- `README.md` - Project description
-- `LICENSE` - MIT License
+- **Backend**: Python/FastAPI (in `Backend/`)
+- **Frontend**: Not yet created
+- **Virtual environment**: `Backend/.venv/` exists but dependencies not installed
 
-No source code, build configuration, or tests exist yet.
+## Development Setup
 
-## Development Setup (To Be Determined)
+### Backend (FastAPI)
 
-As this project evolves, this section should be updated with:
+**Location**: `Backend/`
 
-- **Language/Framework**: (e.g., Python/FastAPI, TypeScript/Next.js, etc.)
-- **Package Manager**: (npm, pip, poetry, etc.)
-- **Build Commands**: (compile, bundle, etc.)
-- **Lint Commands**: (eslint, ruff, etc.)
-- **Test Commands**: (pytest, vitest, jest, etc.)
-- **Run Commands**: (dev server, CLI entry point, etc.)
+**Activate venv**:
+```powershell
+cd Backend
+.\.venv\Scripts\Activate.ps1
+```
+
+**Install dependencies** (run after adding to requirements.txt/pyproject.toml):
+```bash
+pip install fastapi uvicorn
+```
+
+**Run dev server**:
+```bash
+uvicorn main:app --reload
+```
+Server runs at `http://localhost:8000` with auto-reload.
+
+**API docs**: `http://localhost:8000/docs` (Swagger UI)
+
+### Project Structure
+
+```
+AccessLens/
+├── Backend/
+│   ├── .venv/           # Python virtual environment
+│   ├── main.py          # FastAPI entry point
+│   └── (add: requirements.txt, pyproject.toml, app/ modules)
+├── CLAUDE.md
+├── LICENSE
+└── README.md
+```
 
 ## Architecture Notes
 
-When implementation begins, document key architectural decisions here:
-- API design (REST, GraphQL, gRPC)
-- ML model integration approach (local inference, API calls, ONNX, etc.)
-- Image processing pipeline
-- Data storage (if any)
-- Frontend/backend separation (if applicable)
+- **API**: REST (FastAPI)
+- **ML integration**: TBD (local models vs cloud APIs)
+- **Image processing**: TBD (Pillow, OpenCV, etc.)
+- **Data storage**: TBD (if needed for analysis history)
 
-## Important Files to Track
+## Important Files
 
-As the codebase grows, add references to:
-- Main entry points
-- Configuration files
-- Core modules/services
-- Test directories
-- CI/CD configuration
+- `Backend/main.py` - FastAPI app entry point
+- `Backend/.venv/` - Virtual environment (not committed)
 
 ## Git Workflow
 
 - Main branch: `main`
 - Use conventional commits
 - PRs required for changes to main
+- `.venv/` is gitignored
 
 ## License
 
