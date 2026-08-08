@@ -1,0 +1,75 @@
+{
+  "project_name": "AccessLens",
+  "theme": "Light Mode (High-Contrast Swiss Style)",
+  "typography": {
+    "headings": "Cabinet Grotesk",
+    "body": "IBM Plex Sans",
+    "hierarchy": {
+      "h1": "text-5xl md:text-6xl tracking-tighter font-bold text-zinc-950",
+      "h2": "text-3xl md:text-4xl tracking-tight font-semibold text-zinc-950",
+      "h3": "text-xl md:text-2xl font-medium text-zinc-950",
+      "h4": "text-lg font-semibold text-zinc-900 uppercase tracking-widest",
+      "body": "text-base leading-relaxed text-zinc-800"
+    }
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#F4F4F5",
+    "surface_hover": "#E4E4E7",
+    "text_primary": "#09090B",
+    "text_secondary": "#3F3F46",
+    "primary": "#0055FF",
+    "primary_hover": "#0044CC",
+    "accent_warning": "#FFD600",
+    "accent_error": "#E00000",
+    "accent_success": "#00A35C",
+    "border": "#D4D4D8"
+  },
+  "visual_enhancers": {
+    "borders": "1px solid #D4D4D8, or 2px solid #09090B for active/focus states. Hard lines, no soft fades.",
+    "shadows": "Neo-Brutalist / Flat design. Use hard shadows (e.g., shadow-[4px_4px_0px_#09090B]) for buttons and active cards to emphasize interaction.",
+    "radius": "rounded-none or rounded-sm (2px) to match the clinical/professional Swiss style. Avoid fully rounded pill buttons."
+  },
+  "layouts": {
+    "spacing_scale": "Generous. Use p-8 to p-12 for section padding. gap-8 to gap-12 for grids.",
+    "container": "Max-width 7xl mx-auto, w-full, px-4 md:px-8",
+    "grid": "Bento-style for results. Image preview takes col-span-12 md:col-span-8, findings list takes col-span-12 md:col-span-4."
+  },
+  "components": {
+    "Header": "Sticky at top, z-50, backdrop-blur-xl bg-white/90, border-b border-zinc-200. Clear logo left, Nav links center, primary CTA right.",
+    "UploadZone": "Large flex container. dashed border-2 border-zinc-300 hover:border-primary hover:bg-blue-50/50 transition-colors. Include visual icons for Drag & Drop, Camera, File Browse.",
+    "ImagePreview": "Relative container with overflow-hidden. Overlays should be absolute, mapped by percentages (top, left). Pins are small circular buttons with icons or numbers, contrasting heavily with the image.",
+    "FindingsCard": "Flat, 1px border. Left color-coded bar (Red/Yellow/Green) indicating severity. Large typography for category, smaller for description.",
+    "Button": "Sharp corners. Primary: bg-primary text-white hover:bg-primary_hover hover:translate-y-[-2px] transition-transform. Secondary: bg-white text-zinc-950 border-2 border-zinc-950 hover:bg-zinc-100."
+  },
+  "motion": {
+    "hover_states": "Quick transitions (duration-200). Elements lift up slightly and gain hard shadow.",
+    "loading": "A technical 'scanning' animation: a primary colored line moving top-to-bottom over the uploaded image with a translucent colored overlay trailing it."
+  },
+  "accessibility": {
+    "contrast": "Strict adherence to WCAG AAA. Avoid all light gray text on white backgrounds.",
+    "focus": "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none",
+    "aria": "Include aria-labels on all image markers, icon buttons, and file inputs."
+  },
+  "media": {
+    "icons_library": "@phosphor-icons/react",
+    "image_urls": {
+      "demo_image_wheelchair": "https://images.unsplash.com/photo-1619618691037-751d1e6c9ad1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHw0fHx3aGVlbGNoYWlyJTIwYWNjZXNzaWJpbGl0eSUyMGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3ODYxMjI3MjJ8MA&ixlib=rb-4.1.0&q=85",
+      "demo_image_stairs": "https://images.unsplash.com/photo-1580911498851-4999ad5327b6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHxidWlsZGluZyUyMHN0YWlyY2FzZSUyMG1vZGVybnxlbnwwfHx8fDE3ODYxMjI3Mjd8MA&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "instructions_to_main_agent": [
+    "NOTE: The codebase uses .js/.jsx files. Provide all implementations in .js/.jsx, NOT .tsx.",
+    "Install @phosphor-icons/react for icons.",
+    "Install react-dropzone for the drag-and-drop file upload feature.",
+    "Install react-webcam for the camera capture feature.",
+    "Install lucide-react if Shadcn requires it, but prefer Phosphor for primary app icons.",
+    "Use Shadcn UI components for Cards, Buttons, and Tooltips, adjusting them to have square corners (rounded-none).",
+    "For the Image Results view, display the image in a container with 'position: relative'. Map the JSON response (which should contain x,y coordinates) to render absolute positioned marker components (pins) over the image.",
+    "Make sure the application is a Single Page Application using React Router (Home, About Us).",
+    "All interactive and key informational elements MUST include a 'data-testid' attribute (e.g., data-testid='upload-dropzone').",
+    "Mock the backend API call: simulate a 2-second delay and return a hardcoded JSON of accessibility points containing { id, x, y, severity, category, description }.",
+    "For overlays: Never use a completely transparent background under content. Use solid colors or heavy glassmorphism."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": "Prioritize depth, use 12-24px backdrop blur for overlays. Avoid 'AI slop' centering; left-align text blocks. Never apply 'transition: all'. Buttons must have interaction animations. Do not use AI emojis. Ensure high contrast for all UI text."
+}
