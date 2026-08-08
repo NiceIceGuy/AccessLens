@@ -1,0 +1,24 @@
+{
+  "summary": "First-finish smoke tests for AccessLens. Backend health/root/analyze endpoints all functional with mock analyzer. Frontend full flow verified: navigation, upload, analyze, markers, results panel, filters, JSON download, multi-image, and camera dialog all work.",
+  "tested_scope": ["backend", "frontend", "integration"],
+  "passed": [
+    "GET /api/health -> 200 {status:'ok', mode:'mock'}",
+    "GET /api/ -> 200 {message:'AccessLens API online', analyzer:'mock'}",
+    "POST /api/analyze (multipart image) -> 200 with id, filename, analyzed_at, summary, score(51), 3 findings each with id/x/y/severity/category/title/description/recommendation, source='mock', coords within 0-100",
+    "POST /api/analyze without image -> 422 (Pydantic missing field, acceptable 4xx)",
+    "POST /api/analyze with text file -> 400 {detail:'File must be an image'}",
+    "Homepage loads with header, logo, nav (home/about), hero CTAs, upload dropzone/browse/camera, footer",
+    "About page reachable via nav-about (/about route)",
+    "Upload via browse-file-input triggers thumbnail + image-canvas render",
+    "Analyze button triggers scanning-overlay, then 3 markers + 3 finding-cards render, results-panel visible, score='51/100'",
+    "filter-sev-high filter reduced visible cards from 3 to 1 correctly",
+    "download-json-btn triggers download (filename: accesslens-test.jpg.json)",
+    "Multi-image upload: 2 thumbnails present, clicking 2nd thumb switches active image",
+    "Camera dialog opens on upload-camera-btn and closes via camera-close-btn"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
